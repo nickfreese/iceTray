@@ -35,7 +35,7 @@ Ice Tray works by allowing you to define strings of requests.  Each request will
             url: "https://url.to/some/script.js",
             callback: function(){
                 //do stuff using the loaded script
-            }
+            },
             placement: document.getElementById('myNode'), //Dom node selector.  Script will append to this node.
             dependencies: [0] //this request is dependent on the first request loading correctly
         }
