@@ -19,28 +19,28 @@ you create a new iceTray object and define a 'requests' object.  This object tak
 
 **Example Usage**
 
-'''
-var trayOne = new iceTray(); //create a new iceTray
-trayOne.requests = {
-    0:{
-        url: "https://url.to/some/content",
-        callback: function(){
-            //do stuff like use this.response to use data from your request
-        }
-        method: 'GET', //GET is the default so you don't need to specify it
-        responseType: 'text'
-    },
-    1:{
-        url: "https://url.to/some/script.js",
-        callback: function(){
-            //do stuff using the oaded script
-        }
-        placement: document.getElementById('myNode') //Dom node selector.  Script will append to this node.
-    }
-};
 
-trayOne.chain(0); //starts the chain of requests and callbacks for trayOne.
-'''
+    var trayOne = new iceTray(); //create a new iceTray
+    trayOne.requests = {
+        0:{
+            url: "https://url.to/some/content",
+            callback: function(){
+                //do stuff like use this.response to use data from your request
+            }
+            method: 'GET', //GET is the default so you don't need to specify it
+            responseType: 'text'
+        },
+        1:{
+            url: "https://url.to/some/script.js",
+            callback: function(){
+                //do stuff using the oaded script
+            }
+            placement: document.getElementById('myNode') //Dom node selector.  Script will append to this node.
+        }
+    };
+
+    trayOne.chain(0); //starts the chain of requests and callbacks for trayOne.
+
 
 
 **All other parameters are optional**
