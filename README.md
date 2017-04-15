@@ -1,7 +1,18 @@
 
 ice Tray
 -----------------
-Why use iceTray?  Ice Tray lets you progressively load your content and assets.  You can prioritize your most important content to manage the UX in the first crucial moments as your site loads.
+
+It’s important to keep a tight ship when it comes to performance.  Ice Tray allows you to control your critical rendering path to make sure the user sees the most important content first and fast.
+
+Ice Tray works by allowing you to define strings of requests.  Each request will take similar parameters to a standard ajax request, with the addition of some goodies.
+
+The Goodies:
+
+Dependencies:  A list of the requests this one is dependant on.
+
+Images: if Ice Tray senses that the request url is an image it will download it and store the image tag in the request response. Even gives you a callback once the image is finished loading.
+
+Scripts and CSS:  same as with images,  if the request url is a script of CSS, Ice Tray will download it and drop it into the dom in a place of your choosing.  And you still get a call back which will fire after it is finished loading.
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -25,7 +36,7 @@ you create a new iceTray object and define a 'requests' object.  This object tak
         1:{
             url: "https://url.to/some/script.js",
             callback: function(){
-                //do stuff using the oaded script
+                //do stuff using the loaded script
             }
             placement: document.getElementById('myNode'), //Dom node selector.  Script will append to this node.
             dependencies: [0] //this request is dependent on the first request loading correctly
