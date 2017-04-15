@@ -1,21 +1,13 @@
--------------------------------
 
-*Ice Tray - Copyright Nick Freese 2017*
-
--------------------------------
-
-
+ice Tray
+-----------------
 Why use iceTray?  Ice Tray lets you progressively load your content and assets.  You can prioritize your most important content to manage the UX in the first crucial moments as your site loads.
 
 ----------------------------------------------------------------------------------------------------------------------------
 
 *How it works:*
 
-you create a new iceTray object and define a 'requests' object.  This object takes objects numbered started from zero.   
-
-**example:** requests: {0:{}, 1:{}, 2:{}};
-
- - each number object requires a 'url' parameter specifying a source.
+you create a new iceTray object and define a 'requests' object.  This object takes objects numbered started from zero.
 
 **Example Usage**
 
@@ -35,7 +27,8 @@ you create a new iceTray object and define a 'requests' object.  This object tak
             callback: function(){
                 //do stuff using the oaded script
             }
-            placement: document.getElementById('myNode') //Dom node selector.  Script will append to this node.
+            placement: document.getElementById('myNode'), //Dom node selector.  Script will append to this node.
+            dependencies: [0] //this request is dependent on the first request loading correctly
         }
     };
 
@@ -43,8 +36,8 @@ you create a new iceTray object and define a 'requests' object.  This object tak
 
 
 
-**All other parameters are optional**
-
+**All following parameters are optional**
+-------------------------------------
 **dependencies:** [2, 4], 
 
 **responseType:** 'response type', //defaults to ''
@@ -56,3 +49,7 @@ you create a new iceTray object and define a 'requests' object.  This object tak
 **response:** //stores the request response.  is not parameter
 
 ------------------------------------------------------------------------------------------------------------
+
+*Ice Tray - Copyright Nick Freese 2017*
+
+-------------------------------
