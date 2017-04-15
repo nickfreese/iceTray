@@ -13,20 +13,46 @@ Why use iceTray?  Ice Tray lets you progressively load your content and assets. 
 
 you create a new iceTray object and define a 'requests' object.  This object takes objects numbered started from zero.   
 
-*example:* requests: {0:{}, 1:{}, 2:{}};
+**example:** requests: {0:{}, 1:{}, 2:{}};
 
  - each number object requires a 'url' parameter specifying a source.
 
- - All other parameters are optional.
+**Example Usage**
 
-*dependencies:* [2, 4], 
+'''
+var trayOne = new iceTray(); //create a new iceTray
+trayOne.requests = {
+    0:{
+        url: "https://url.to/some/content",
+        callback: function(){
+            //do stuff like use this.response to use data from your request
+        }
+        method: 'GET', //GET is the default so you don't need to specify it
+        responseType: 'text'
+    },
+    1:{
+        url: "https://url.to/some/script.js",
+        callback: function(){
+            //do stuff using the oaded script
+        }
+        placement: document.getElementById('myNode') //Dom node selector.  Script will append to this node.
+    }
+};
 
-*responseType:* 'response type', //defaults to ''
+trayOne.chain(0); //starts the chain of requests and callbacks for trayOne.
+'''
 
-*method:* 'POST or GET' //defaults to GET
 
-*placement:*  domNode //in the case of loading external JS or CSS this is the dom node which you would like to append the script
+**All other parameters are optional**
 
-*response:* //stores the request response.  is not parameter
+**dependencies:** [2, 4], 
+
+**responseType:** 'response type', //defaults to ''
+
+**method:** 'POST or GET' //defaults to GET
+
+**placement:**  domNode //in the case of loading external JS or CSS this is the dom node which you would like to append the script
+
+**response:** //stores the request response.  is not parameter
 
 ------------------------------------------------------------------------------------------------------------
