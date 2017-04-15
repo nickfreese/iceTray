@@ -1,6 +1,6 @@
 -------------------------------
 
-Ice Tray - Copyright Nick Freese 2017
+*Ice Tray - Copyright Nick Freese 2017*
 
 -------------------------------
 
@@ -9,24 +9,24 @@ Why use iceTray?  Ice Tray lets you progressively load your content and assets. 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-How it works:
+*How it works:*
 
 you create a new iceTray object and define a 'requests' object.  This object takes objects numbered started from zero.   
 
-example: requests: {0:{}, 1:{}, 2:{}};
+*example:* requests: {0:{}, 1:{}, 2:{}};
 
-each number object requires a 'url' parameter specifying a source.
+ - each number object requires a 'url' parameter specifying a source.
 
-All other parameters are optional.
+ - All other parameters are optional.
 
-dependencies: [2, 4], 
+*dependencies:* [2, 4], 
 
-responseType: 'response type', //defaults to ''
+*responseType:* 'response type', //defaults to ''
 
-method: 'POST or GET' //defaults to GET
+*method:* 'POST or GET' //defaults to GET
 
-placement:  domNode //in the case of loading external JS or CSS this is the dom node which you would like to append the script
+*placement:*  domNode //in the case of loading external JS or CSS this is the dom node which you would like to append the script
 
-response: //stores the request response.  is not parameter;
+*response:* //stores the request response.  is not parameter
 
 ------------------------------------------------------------------------------------------------------------
