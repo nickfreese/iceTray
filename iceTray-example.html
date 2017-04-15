@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>Ice Tray Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+#header-test{
+    box-sizing:border-box;
+    padding:20px 0px;
+    font-family:arial;
+    font-size:1.5em;
+    color:#333333;
+    margin-left:20px;
+}
+.callback-item{
+    font-family: arial;
+    color: #333333;
+    padding: 10px;
+    margin-left: 20px;
+    display: inline-block;
+    float: left;
+    width: 50%;
+    max-width: 500px;
+    clear: both;
+    border-bottom: 2px solid #ececec;
+}
+.callback-item img{
+        height:1.5em;
+        margin-left:20px;
+}
+</style>
+</head>
+<body>
+<div id='header-test'>
+Ice Tray Example
+</div>
+<div id='content'>
+    
+</div>
+<script src='iceTray.js'></script>
+<script>
+
+//-------------------usage------------------
+    
+var trayOne = new iceTray();
+    
+    trayOne.requests = {
+        
+        0:{
+            url: 'https://nickfreese.com/plugin-repository/ice-tray/example/',
+            method: 'POST',
+            callback: function(data){
+                console.log('request: 0');
+                console.log(this.response); // data from succesful calls gets stored in response variable for each request to be referenced later
+                var div = document.createElement('div');
+                div.className = 'callback-item';
+                div.innerHTML = 'Response 0 callback content: ' + JSON.parse(this.response)[0];
+                document.getElementById('content').appendChild(div);
+            },
+        },
+        1:{
+            url: 'https://nickfreese.com/plugin-repository/ice-tray/example/',
+            callback: function(data){
+                console.log('request: 1');
+                console.log(this.response);
+                var div = document.createElement('div');
+                div.className = 'callback-item';
+                div.innerHTML = 'Response 1 callback content: ' + JSON.parse(this.response)[1];
+                document.getElementById('content').appendChild(div);
+            },
+            responseType: 'text',
+        },
+        2:{
+            url: 'https://nickfreese.com/plugin-repository/ice-tray/example/',
+            responseType: 'text',
+            callback: function(data){
+                console.log('request: 2');
+                var div = document.createElement('div');
+                div.className = 'callback-item';
+                div.innerHTML = 'Response 2 callback content: ' + JSON.parse(this.response);
+                document.getElementById('content').appendChild(div);
+            },
+            dependencies: [0, 1],
+        },
+        3:{
+            url: 'https://nickfreese.com/plugin-repository/ice-tray/example/script.js',
+            placement: document.getElementById('header-test'),
+            callback: function(){
+                console.log('request: 3');
+                var div = document.createElement('div');
+                div.className = 'callback-item';
+                div.innerHTML = 'Response 3 callback content: ' + myRemoteVariable;
+                document.getElementById('content').appendChild(div);
+                
+            },
+            dependencies: [1],
+        },
+        4:{
+            url: 'https://nickfreese.com/plugin-repository/ice-tray/example/sunset.jpg',
+            callback: function(){
+                console.log(this.response);
+                console.log('request: 4');
+                 var div = document.createElement('div');
+                div.className = 'callback-item';
+                div.innerHTML = 'Response 4 callback content';
+                div.appendChild(this.response);
+                document.getElementById('content').appendChild(div);
+            },
+        },
+        5:{
+            url: 'https://nickfreese.com/plugin-repository/ice-tray/example/style.css',
+            placement: document.getElementById('header-test'),
+            callback: function(){
+                console.log('request: 5');
+                 var div = document.createElement('div');
+                div.className = 'callback-item';
+                div.innerHTML = 'Response 5 callback content';
+                document.getElementById('content').appendChild(div);
+            },
+        },
+    };
+    
+trayOne.chain(0);
+    
+ 
+</script>
+</body>
+</html>
