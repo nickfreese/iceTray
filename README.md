@@ -6,19 +6,17 @@ It’s important to keep a tight ship when it comes to performance.  Ice Tray al
 
 Ice Tray works by allowing you to define strings of requests.  Each request will take similar parameters to a standard ajax request, with the addition of some goodies.
 
-The Goodies:
+**The Goodies:**
 
-Dependencies:  A list of the requests this one is dependant on.
+ - Dependencies:  A list of the requests this one is dependant on.
 
-Images: if Ice Tray senses that the request url is an image it will download it and store the image tag in the request response. Even gives you a callback once the image is finished loading.
+ - Images: if Ice Tray senses that the request url is an image it will download it and store the image tag in the request response. Even gives you a callback once the image is finished loading.
 
-Scripts and CSS:  same as with images,  if the request url is a script of CSS, Ice Tray will download it and drop it into the dom in a place of your choosing.  And you still get a call back which will fire after it is finished loading.
+ - Scripts and CSS:**  same as with images,  if the request url is a script of CSS, Ice Tray will download it and drop it into the dom in a place of your choosing.  And you still get a call back which will fire after it is finished loading.
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-*How it works:*
-
-you create a new iceTray object and define a 'requests' object.  This object takes objects numbered started from zero.
+ To get setup, create a new iceTray object and define a 'requests' object.  This object takes objects numbered started from zero.  This is the order they will be called in.
 
 **Example Usage**
 
