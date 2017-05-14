@@ -92,7 +92,15 @@ var iceTray = function() {
                 if (_this.requests[key] !== undefined) {
                     _this.chain(key);
                 }
-            }
+            };
+            img.onerror = function(e){
+                e = e || window.e;
+                _this.failed.push(key);
+                key = key + 1;
+                if (_this.requests[key] !== undefined) {
+                    _this.chain(key);
+                } 
+            };
             img.src = this.requests[key].url;
             
         }
@@ -107,6 +115,15 @@ var iceTray = function() {
                     _this.chain(key);
                 }
             };
+            script.onerror = function(e){
+                e = e || window.e;
+                _this.failed.push(key);
+                key = key + 1;
+                if (_this.requests[key] !== undefined) {
+                    _this.chain(key);
+                }
+                
+            }
             script.src = this.requests[key].url;
             _this.requests[key].placement.appendChild(script);
         }
@@ -122,6 +139,14 @@ var iceTray = function() {
                     _this.chain(key);
                 }
 
+            };
+            css.onerror = function(e){
+                e = e || window.e;
+                _this.failed.push(key);
+                key = key + 1;
+                if (_this.requests[key] !== undefined) {
+                    _this.chain(key);
+                } 
             };
             css.type = "text/css";
             css.rel = "stylesheet";
